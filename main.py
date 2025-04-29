@@ -1,10 +1,13 @@
+MAX_LINES = 5
+MAX_BET = 100
+MIN_BET = 1
 def deposit():
     #This function is responsible for collecting user input that gets the deposit from the user 
 
     while True: 
 
         amount = input("What would you like to deposit? R")
-
+        
         #we have to check if the amount is a number/int 
 
         if amount.isdigit():
@@ -20,6 +23,54 @@ def deposit():
             print("Please enter a number.")
     return amount
 
-            
-deposit()
+def get_bet():
+
+    while True: 
+
+        amount = input("Enter the amount you want to bet? R")
         
+        #we have to check if the amount is a number/int 
+
+        if amount.isdigit():
+            amount = int(amount)
+
+            if MIN_BET <= amount <= MAX_BET:
+                break
+            else:
+        
+                print(f"Amount must be R{MIN_BET} - R{MAX_BET}.")
+
+        else:
+            print("Please enter a number.")
+    return amount
+    
+
+def get_number_of_lines():
+     while True: 
+
+        lines = input("Enter the number of lines you want to be on(1-"+ str(MAX_LINES) + ")? ")
+
+
+        if lines.isdigit():
+            lines = int(lines)
+
+            if 1 <= lines <= MAX_LINES:
+                break
+            else:
+        
+                print("Please enter valid number of lines")
+
+        else:
+            print("Please enter a number.")
+        return lines
+def main():         
+    balance = deposit()
+    lines = get_number_of_lines()
+    bet = get_bet()
+    total_bet = bet * lines
+    print(f"You are betting R{bet} on {lines} lines. Total bet is equal to: R{total_bet}")
+
+    
+    
+
+main() #call main function 
